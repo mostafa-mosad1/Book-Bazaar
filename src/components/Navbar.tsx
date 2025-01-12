@@ -1,0 +1,240 @@
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import PersonIcon from "@mui/icons-material/Person";
+import LoginIcon from "@mui/icons-material/Login";
+import Link from "next/link";
+import { Stack } from "@mui/material";
+import Image from "next/image";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
+const pages = ["Home", "Categories", "Authors"];
+
+function Navbar() {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  return (
+    <AppBar
+      sx={{
+        width: "100%",
+        position: "sticky",
+        top: "0px",
+        backgroundImage: 'url("/images/bgNavBar.png")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        zIndex: "1000",
+      }}
+      position="static"
+      className="bg-white"
+    >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters>
+          <Stack
+            direction={"row"}
+            justifyContent={"center"}
+            justifyItems={"center"}
+          >
+            <Image src="/images/logo.png" alt="logo" width="50" height={"50"} />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              className="text-red-200 text-2xl"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                color: "#CC9600",
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 900,
+                textDecoration: "none",
+                py: "10",
+              }}
+            >
+              Bound Words
+            </Typography>
+          </Stack>
+
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            // href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              textDecoration: "none",
+              color: "#CC9600",
+            }}
+          >
+            Bound Words
+          </Typography>
+
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              sx={{ color: "white" }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{ display: { xs: "block", md: "none" } }}
+            >
+              {pages.map((page) => (
+                <Link href={`/${page}`}>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography
+                      sx={{ textAlign: "center", textTransform: "capitalize" }}
+                    >
+                      {page}
+                    </Typography>
+                  </MenuItem>
+                </Link>
+              ))}
+
+              {localStorage.getItem("token") ? (
+                <div className="flex gap-4  w-fit">
+                  <Link href={"/Cart"}>
+                    <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
+                  </Link>
+                  <Link href={"/favorites"}>
+                    <FavoriteBorderIcon sx={{ cursor: "pointer" }} />
+                  </Link>
+                </div>
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "2px",
+                    gap: "4px",
+                  }}
+                >
+                  <Button
+                    className="bg-white text-textColor hover:bg-textColor hover:text-white"
+                    sx={{ border: "1px solid black", color: "black" }}
+                    endIcon={<PersonIcon />}
+                  >
+                    <Link href={"/signup"}> Sign Up</Link>
+                  </Button>
+                  <Button
+                    className="bg-white text-textColor hover:bg-textColor hover:text-white"
+                    sx={{ border: "1px solid black ", color: "black" }}
+                    endIcon={<LoginIcon />}
+                  >
+                    <Link href={"/signin"}> Log in</Link>
+                  </Button>
+                </Box>
+              )}
+            </Menu>
+          </Box>
+
+          <Stack
+            direction={"row"}
+            justifyContent={"center"}
+            justifyItems={"center"}
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+          >
+            {pages.map((page) => (
+              <Link href={`/${page}`}>
+                <Button
+                  className="text-background text-sm font-semibold"
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    display: "block",
+                    textTransform: "capitalize",
+                    color: "white",
+                  }}
+                >
+                  {page}
+                </Button>
+              </Link>
+            ))}
+          </Stack>
+          <Box
+            sx={{
+              flexGrow: 0,
+              display: { xs: "none", md: "flex" },
+              gap: {
+                xs: "5px",
+                sm: "10px",
+              },
+              alignItems: "center",
+            }}
+          >
+            {localStorage.getItem("token") ? (
+              <div className="flex gap-4  w-fit absolute top-8  right-8">
+                <Link href={"/Cart"}>
+                  <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
+                </Link>
+                <Link href={"/favorites"}>
+                  <FavoriteBorderIcon sx={{ cursor: "pointer" }} />
+                </Link>
+              </div>
+            ) : (
+              <>
+                <Button
+                  className="bg-white text-textColor hover:bg-textColor hover:text-white"
+                  sx={{ border: "1px solid white", color: "white" }}
+                  endIcon={<PersonIcon />}
+                >
+                  <Link href={"/signup"}> Sign Up</Link>
+                </Button>
+                <Button
+                  className="bg-white text-textColor hover:bg-textColor hover:text-white"
+                  sx={{ border: "1px solid white", color: "white" }}
+                  endIcon={<LoginIcon />}
+                >
+                  <Link href={"/signin"}> Log in</Link>
+                </Button>
+              </>
+            )}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}
+export default Navbar;
