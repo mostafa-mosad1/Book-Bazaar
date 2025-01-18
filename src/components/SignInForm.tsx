@@ -16,7 +16,7 @@ interface Iprops {}
 function SignInForm({}: Iprops) {
   const { push } = useRouter();
 
-  const [SignInFunction, { isLoading, data, error }] = useSigninMutation();
+  const [SignInFunction, { isLoading }] = useSigninMutation();
   const {
     register,
     handleSubmit,
