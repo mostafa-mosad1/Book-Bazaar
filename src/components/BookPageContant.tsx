@@ -7,9 +7,7 @@ import {
   Button,
   Card,
   CardMedia,
-  Rating,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -34,31 +32,28 @@ function BookPageContant({ BookId }: Iprops) {
   const { data: CartData } = useGetCartBooksQuery("");
   const [
     addFavFun,
-    { isLoading: isLoadingAddFav, data: dataFav, error: errorFav },
+    { isLoading: isLoadingAddFav },
   ] = useAddToFavoritesMutation();
 
   const [
     AddToCartFun,
-    { isLoading: isLoadingAddCart, data: DataAddCart, error: ErrorAddCart },
+    { isLoading: isLoadingAddCart },
   ] = useAddToCartMutation();
   const { data: FavData } = useGetFavoritesBooksQuery("");
   const [
     DeleteFavFun,
-    { isLoading: isLoadingFavDelete, data: dataDelete, error: errorDelete },
+    { isLoading: isLoadingFavDelete },
   ] = useDeleteToFavoritesMutation();
   const [
     DeleteCartFun,
     {
       isLoading: isLoadingCartDelete,
-      data: dataCartDelete,
-      error: errorCartDelete,
     },
   ] = useDeleteToCartMutation();
 
-  const [review, setReview] = React.useState<string | null>();
-  const [rate, setRtaing] = React.useState<number | null>(2);
+  
 
-  const { isLoading, data, error } = useGetSingleBookQuery(BookId);
+  const { isLoading, data } = useGetSingleBookQuery(BookId);
 
   if (isLoading)
     return (
@@ -194,67 +189,6 @@ function BookPageContant({ BookId }: Iprops) {
           </Box>
         </Stack>
       </Card>
-      {/* 
-      
-      <Card sx={{ padding: "40px", marginTop: "30px" }}>
-        <Typography component={"h2"} variant="h4" sx={{ color: "#CC9600" }}>
-          Add Review
-        </Typography>
-        <form onSubmit={(e)=>{
-            e.preventDefault();
-            console.log(review)
-            console.log(rate)
-        }} >
-          <div className="flex justify-center items-center " >
-            <TextField
-              sx={{
-                width: "80%",
-                mr: "20px",
-                display: "block",
-                borderRadius: "10px",
-                background: "#D6CE80",
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    border: "none",
-                  },
-                },
-              }}
-              id="Review"
-              label="Review"
-              type="text"
-              onChange={(e) => {
-                setReview(e.target.value);
-              }}
-            />
-            <Rating
-              name="Rating"
-              value={rate}
-              onChange={(event, newValue) => {
-                setRtaing(newValue);
-              }}
-            />
-          </div>
-          <Button
-            variant="contained"
-            //   disabled={isLoading}
-            type="submit"
-            sx={{
-              px: 10,
-              fontSize: "1.25rem",
-              mt: 0,
-              backgroundColor: "#CC9600",
-              marginTop: "15px",
-              display: "block",
-            }}
-          >
-            ADD
-            //  {isLoading ? <Loader /> : "Submit"} 
-          </Button>
-        </form>
-      </Card>
-
-      */}
-
       <Card sx={{ margin: "40px", padding: "10px", textAlign: "center" }}>
         <Typography sx={{ color: "#CC9600" }} component={"h5"} variant="h5">
           Recommendation Books

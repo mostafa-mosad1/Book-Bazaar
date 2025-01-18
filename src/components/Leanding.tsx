@@ -2,7 +2,6 @@
 import {
   Box,
   Button,
-  Container,
   FormControl,
   Stack,
   TextField,
@@ -10,8 +9,8 @@ import {
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
-interface Iprops {}
-function Leanding({}: Iprops) {
+
+function Leanding() {
   interface ISearch {
     search: string;
   }
@@ -19,7 +18,6 @@ function Leanding({}: Iprops) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<ISearch>();
   const onSubmit: SubmitHandler<ISearch> = async (data) => {
     console.log(data);

@@ -2,11 +2,10 @@ import { Box, Stack, Typography } from "@mui/material";
 import SignForm from "@/components/SignUpForm";
 import Image from "next/image";
 
-
 function Signup() {
   return (
-    <Stack sx={{ height: "100vh", background: "black" }} direction={"row"} >
-       <Box
+    <Stack sx={{ height: "100vh", background: "black" }} direction={"row"}>
+      <Box
         sx={{
           height: "100vh",
           width: "50%",
@@ -22,31 +21,31 @@ function Signup() {
         />
       </Box>
 
-    <Box
-      sx={{
-        // height: "100vh",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
       <Box
         sx={{
-          width: "60%",
-          padding: "10px",
+          // height: "100vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Typography
+        <Box
+          sx={{
+            width: "60%",
+            padding: "10px",
+          }}
+        >
+          <Typography
             variant="h3"
             className="text-textColor  font-bold  text-center "
-            sx={{marginBlock:"10px"}}
+            sx={{ marginBlock: "10px" }}
           >
-          SIGN UP TO Bound  Words!
+            SIGN UP TO Bound Words!
           </Typography>
-        <SignForm />
+          <SignForm />
+        </Box>
       </Box>
-    </Box>
     </Stack>
   );
 }

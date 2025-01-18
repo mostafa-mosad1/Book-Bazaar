@@ -2,9 +2,9 @@
 import { useGetHomeDataQuery } from "@/redux/features/Api/HomeSlice";
 import BookCard from "@/components/BookCard";
 import Loader from "@/components/Loader";
-interface Iprops {}
-function HomeContant({}: Iprops) {
-  const { isLoading, data, error } = useGetHomeDataQuery("");
+
+function HomeContant() {
+  const { isLoading, data } = useGetHomeDataQuery("");
   if (isLoading)
     return (
       <div className="mt-28  mx-auto ">

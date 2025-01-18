@@ -1,7 +1,7 @@
 import HomeContant from "@/components/HomeContant";
 
-interface Iprops {}
-function page({}: Iprops) {
+
+function page() {
   return (
     <>
       <HomeContant />

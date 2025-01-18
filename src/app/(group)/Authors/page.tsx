@@ -1,10 +1,8 @@
 import { Card, Typography } from "@mui/material";
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 
-interface Iprops {	
-     
-}	
-function page({}:Iprops) {
+
+function page() {
    
     return (
         <>

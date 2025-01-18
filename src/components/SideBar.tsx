@@ -10,8 +10,8 @@ import {
 import Loader from "./Loader";
 import Link from "next/link";
 
-interface Iprops {}
-function SideBar({}: Iprops) {
+
+function SideBar() {
   const { isLoading, data, error } = useGetAllCategoriesQuery("");
   const {
     isLoading: loadingAuthors,

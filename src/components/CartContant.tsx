@@ -3,26 +3,18 @@ import {
   useDeleteToCartMutation,
   useGetCartBooksQuery,
 } from "@/redux/features/Api/CartSlice";
-import { Box, Button, Container, Input } from "@mui/material";
+import { Button, Container } from "@mui/material";
 
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import BasicRating from "@/components/Rating";
-import AddToCartButton from "@/components/AddToCartButton";
-import cartImage from "../../../public/images/cartEmpty.png";
 import Image from "next/image";
-import Link from "next/link";
 import Loader from "./Loader";
-import { ClipLoader } from "react-spinners";
 
-interface Iprops {}
-function CartContant({}: Iprops) {
-  const { isLoading, data, error } = useGetCartBooksQuery("");
-  const [
-    DeleteFun,
-    { isLoading: LoadingDelete, data: dataDelete, error: errorDelete },
-  ] = useDeleteToCartMutation();
+function CartContant() {
+  const { isLoading, data } = useGetCartBooksQuery("");
+  const [DeleteFun] = useDeleteToCartMutation();
   if (isLoading)
     return (
       <div className="h-[50vh] flex justify-center items-center ">

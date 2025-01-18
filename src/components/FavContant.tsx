@@ -6,12 +6,10 @@ import Loader from "./Loader";
 import Image from "next/image";
 
 
-interface Iprops {	
-     
-}	
-function FavContant({}:Iprops) {
-    const { isLoading, data, error } = useGetFavoritesBooksQuery("");
-    const [DeleteFun , {isLoading:isLoadingDelete,data:dataDelete,error:errorDelete}] =useDeleteToFavoritesMutation();
+
+function FavContant() {
+    const { isLoading, data } = useGetFavoritesBooksQuery("");
+    const [DeleteFun ] =useDeleteToFavoritesMutation();
     if (isLoading)
         return (
           <div className="h-[50vh] flex justify-center items-center ">

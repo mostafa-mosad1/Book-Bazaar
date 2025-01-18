@@ -1,7 +1,5 @@
-interface Iprops {	
-     
-}	
-function page({}:Iprops) {
+	
+function page() {
     return (
         <>
             <p>Categories</p>

@@ -1,19 +1,21 @@
-"use client"
+"use client";
 import BookCard from "@/components/BookCard";
 import Loader from "@/components/Loader";
 import { useGetAllBooksByCategoryQuery } from "@/redux/features/Api/gategoriesSlice";
 
+interface Iprops {
+  id: string;
+}
+function CategoriesPageContant({ id }: Iprops) {
+  const { isLoading, data } = useGetAllBooksByCategoryQuery(id);
+  if (isLoading)
+    return (
+      <div className="mt-28  mx-auto ">
+        <Loader />
+      </div>
+    );
 
-interface Iprops {	
-    id: string 
-}	
-function CategoriesPageContant({id}:Iprops) {
-    const {isLoading,data,error}   = useGetAllBooksByCategoryQuery(id);
-if (isLoading) return <div className="mt-28  mx-auto "><Loader/></div>
-
-
-
-const allBooks = data?.payload?.books.map(
+  const allBooks = data?.payload?.books.map(
     (book: {
       id: number;
       title: string;
@@ -27,7 +29,7 @@ const allBooks = data?.payload?.books.map(
       };
     }) => (
       <BookCard
-      key={book.id}
+        key={book.id}
         id={book.id}
         title={book.title}
         img={"/images/bookImage.png"}
@@ -36,12 +38,11 @@ const allBooks = data?.payload?.books.map(
       />
     )
   );
-    return (
-        <>
-                        <div className="flex flex-wrap gap-4 justify-center">{allBooks}</div>
-
-        </>
-    )
+  return (
+    <>
+      <div className="flex flex-wrap gap-4 justify-center">{allBooks}</div>
+    </>
+  );
 }
 
 export default CategoriesPageContant;

@@ -8,7 +8,7 @@ interface Iprops {
   id: string;
 }
 function AuthorsContant({ id }: Iprops) {
-  const { isLoading, data, error } = useGetAuthorBooksByIdQuery(id);
+  const { isLoading, data } = useGetAuthorBooksByIdQuery(id);
   if (isLoading)
     return (
       <div className="mt-28  mx-auto ">
