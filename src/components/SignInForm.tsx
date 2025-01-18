@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SignInFormData } from "@/data";
 import { IFormInputSignIn } from "@/Interface";
 import { useSigninMutation } from "@/redux/features/Api/Authapi";
