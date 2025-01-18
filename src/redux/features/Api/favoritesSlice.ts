@@ -12,7 +12,7 @@ export const favoritesSlice = createApi({
         return {
           url: "/favorites/allFavorites",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage?.getItem("token")}`,
           },
         };
       },
@@ -37,7 +37,7 @@ export const favoritesSlice = createApi({
             bookId: BookId,
           },
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage?.getItem("token")}`,
           },
         };
       },
@@ -50,7 +50,7 @@ export const favoritesSlice = createApi({
           method: "DELETE",
 
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage?.getItem("token")}`,
           },
         };
       },
