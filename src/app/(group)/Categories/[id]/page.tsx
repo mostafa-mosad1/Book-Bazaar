@@ -1,10 +1,15 @@
 import CategoriesPageContant from "@/components/CategoriesPageContant";
 
-interface Iprops {	
-    params: { id: string };
-}	
-async function page({params}:Iprops) {
-    const id = await params.id;
+
+interface IProps {
+    params: Promise<{
+      id: string;
+    }>;
+  }
+  async function page(props: IProps) {
+    const params = await props.params;
+    const { id } = params;
+  
 
 
     return (
