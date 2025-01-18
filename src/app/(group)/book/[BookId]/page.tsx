@@ -6,8 +6,8 @@ interface Iprops {
     BookId: string;
   };
 }
-function page({ params }: Iprops) {
-  const BookId = params.BookId;
+async function page({ params }: Iprops) {
+  const BookId = await params.BookId;
   return (
     <>
     <BookPageContant BookId={BookId} />

@@ -3,8 +3,8 @@ import AuthorsContant from "@/components/AuthorsContant";
 interface Iprops {
   params: { id: string };
 }
-function page({ params }: Iprops) {
-  const id = params.id;
+ async function page({ params }: Iprops) {
+  const id = await params.id;
 
   return (
     <>
