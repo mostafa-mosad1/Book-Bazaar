@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -54,7 +55,7 @@ function Navbar() {
             justifyContent={"center"}
             justifyItems={"center"}
           >
-            <Image src="/images/logo.png" alt="logo" width="50" height={"50"} />
+            <img src="/images/logo.png" alt="logo" width="50" height={"50"} />
             <Typography
               variant="h6"
               noWrap
@@ -121,7 +122,7 @@ function Navbar() {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
-                <Link href={`/${page}`}>
+                <Link key={page} href={`/${page}`}>
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography
                       sx={{ textAlign: "center", textTransform: "capitalize" }}
@@ -176,7 +177,7 @@ function Navbar() {
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
             {pages.map((page) => (
-              <Link href={`/${page}`}>
+              <Link key={page} href={`/${page}`}>
                 <Button
                   className="text-background text-sm font-semibold"
                   key={page}

@@ -19,18 +19,17 @@ function AddToCartButton({ id }: Iprops) {
   const InCart = CartData?.payload?.books.some(
     (item: any) => item.bookId == id
   );
-  console.log(InCart);
 
   return (
     <>
       <button
-        onClick={() => {
+        onClick={ async () => {
           if (InCart) {
             DeleteCartFun(id);
-            toast.error(`delete book with id ${id} to favorites`);
+            toast.error(`delete book with id ${id} from Cart`);
           } else {
             AddToCartFun(id);
-            toast.success(`added book with id ${id} to favorites`);
+            toast.success(`added book with id ${id} to Cart`);
           }
         }}
         type={"submit"}
@@ -40,7 +39,7 @@ function AddToCartButton({ id }: Iprops) {
         }
        `}
       >
-        {InCart ? "Remove TO CART" : "ADD TO CART"}
+        {InCart ? "Remove From Cart" : "Add To Cart"}
       </button>
     </>
   );

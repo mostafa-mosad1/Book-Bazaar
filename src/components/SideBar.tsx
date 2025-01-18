@@ -46,7 +46,7 @@ function SideBar({}: Iprops) {
       deathDate: string;
       numOfBooks: number;
     }) => (
-      <Link href={`/Authors/${aut.id}`}>
+      <Link key={aut.id} href={`/Authors/${aut.id}`}>
         <Typography
           key={aut.id}
           className="cursor-pointer p-2 hover:text-white rounded-md my-4 hover:bg-[#CC9600]"
@@ -105,7 +105,7 @@ function SideBar({}: Iprops) {
                 sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
                 component={"h2"}
               >
-                AUthors
+                Authors
               </Typography>
               <SearchIcon sx={{ fontSize: "2.5rem", fontWeight: "bold" }} />
             </Stack>
