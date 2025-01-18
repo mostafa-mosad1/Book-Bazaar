@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+const localData =
+  typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
 export const CartSlice = createApi({
   reducerPath: "cart",
@@ -12,7 +14,7 @@ export const CartSlice = createApi({
         return {
           url: "/carts/allCartBooks",
           headers: {
-            Authorization: `Bearer ${localStorage?.getItem("token")}`,
+            Authorization: `Bearer ${localData}`,
           },
         };
       },
@@ -37,7 +39,7 @@ export const CartSlice = createApi({
             bookId: BookId,
           },
           headers: {
-            Authorization: `Bearer ${localStorage?.getItem("token")}`,
+            Authorization: `Bearer ${localData}`,
           },
         };
       },
@@ -50,7 +52,7 @@ export const CartSlice = createApi({
           method: "DELETE",
 
           headers: {
-            Authorization: `Bearer ${localStorage?.getItem("token")}`,
+            Authorization: `Bearer ${localData}`,
           },
         };
       },
