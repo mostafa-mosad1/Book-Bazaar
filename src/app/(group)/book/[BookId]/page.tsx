@@ -7,7 +7,7 @@ interface Iprops {
   };
 }
 function page({ params }: Iprops) {
-  let BookId = params.BookId;
+  const BookId = params.BookId;
   return (
     <>
     <BookPageContant BookId={BookId} />

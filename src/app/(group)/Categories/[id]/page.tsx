@@ -4,7 +4,7 @@ interface Iprops {
     params: { id: string };
 }	
 function page({params}:Iprops) {
-    let id = params.id;
+    const id = params.id;
 
 
     return (
