@@ -1,8 +1,8 @@
 import FavContant from "@/components/FavContant";
 import Navbar from "@/components/Navbar";
 
-interface Iprops {}
-function page({}: Iprops) {
+
+function page() {
   return (
     <>
       <Navbar />

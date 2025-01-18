@@ -21,7 +21,7 @@ function CartContant() {
         <Loader />
       </div>
     );
-  let CartBooks = data?.payload?.books?.map(
+  const CartBooks = data?.payload?.books?.map(
     (book: {
       book: {
         id: string;

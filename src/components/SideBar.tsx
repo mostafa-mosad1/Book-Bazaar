@@ -12,11 +12,10 @@ import Link from "next/link";
 
 
 function SideBar() {
-  const { isLoading, data, error } = useGetAllCategoriesQuery("");
+  const { isLoading, data } = useGetAllCategoriesQuery("");
   const {
     isLoading: loadingAuthors,
     data: AuthorsData,
-    error: errorAuthors,
   } = useGetAllAuthorsQuery("");
   const allGategories = data?.payload?.categories.map(
     (cate: { id: number; categoryName: string }) => (

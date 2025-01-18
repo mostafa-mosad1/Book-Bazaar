@@ -11,13 +11,15 @@ interface Iprops {
   id: number;
 }
 function AddToCartButton({ id }: Iprops) {
-  const [AddToCartFun, { isLoading, data, error }] = useAddToCartMutation();
+  const [AddToCartFun] = useAddToCartMutation();
   const { data: CartData } = useGetCartBooksQuery("");
-  const [DeleteCartFun, { data: dataDelete, error: errorDelete }] =
+  const [DeleteCartFun] =
     useDeleteToCartMutation();
 
   const InCart = CartData?.payload?.books.some(
-    (item: any) => item.bookId == id
+    (item: {
+      bookId:number
+    }) => item.bookId == id
   );
 
   return (

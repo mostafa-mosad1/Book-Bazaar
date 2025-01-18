@@ -87,10 +87,10 @@ function BookPageContant({ BookId }: Iprops) {
   );
 
   const InCart = CartData?.payload?.books.some(
-    (item: any) => item.bookId == data?.payload.book.id
+    (item: {bookId:number}) => item.bookId == data?.payload.book.id
   );
   const InFav = FavData?.payload?.books.some(
-    (item: any) => item.bookId == data?.payload.book.id
+    (item: {bookId:number}) => item.bookId == data?.payload.book.id
   );
   return (
     <>

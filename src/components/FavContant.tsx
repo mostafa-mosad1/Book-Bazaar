@@ -16,7 +16,7 @@ function FavContant() {
             <Loader />
           </div>
         );
-    let FavtBooks = data?.payload?.books?.map(
+    const FavtBooks = data?.payload?.books?.map(
        (book: {
          book: {
            id: string;
