@@ -31,6 +31,8 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const localData =
+  typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   return (
     <AppBar
@@ -132,7 +134,7 @@ function Navbar() {
                 </Link>
               ))}
 
-              {localStorage.getItem("token") ? (
+              {localData ? (
                 <div className="flex gap-4  w-fit">
                   <Link href={"/Cart"}>
                     <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
@@ -204,7 +206,7 @@ function Navbar() {
               alignItems: "center",
             }}
           >
-            {localStorage.getItem("token") ? (
+            {localData ? (
               <div className="flex gap-4  w-fit absolute top-8  right-8">
                 <Link href={"/Cart"}>
                   <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
