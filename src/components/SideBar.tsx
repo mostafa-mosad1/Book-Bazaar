@@ -47,7 +47,7 @@ function SideBar({}: Iprops) {
       numOfBooks: number;
     }) => (
       <Link key={aut.id} href={`/Authors/${aut.id}`}>
-        <Typography
+        <Box
           key={aut.id}
           className="cursor-pointer p-2 hover:text-white rounded-md my-4 hover:bg-[#CC9600]"
           onClick={() => {
@@ -63,7 +63,7 @@ function SideBar({}: Iprops) {
             </Typography>
             <PersonIcon sx={{ fontSize: "1.5rem", fontWeight: "bold" }} />
           </Stack>
-        </Typography>
+        </Box>
       </Link>
     )
   );
@@ -77,7 +77,7 @@ function SideBar({}: Iprops) {
             padding: "8px",
           }}
         >
-          <Typography>
+          <Box>
             <Stack
               sx={{ my: "10px" }}
               direction={"row"}
@@ -91,11 +91,11 @@ function SideBar({}: Iprops) {
               </Typography>
               <SearchIcon sx={{ fontSize: "2.5rem", fontWeight: "bold" }} />
             </Stack>
-          </Typography>
+          </Box>
           {isLoading ? <Loader /> : allGategories}
         </Box>
         <Box sx={{ my: "40px", boxShadow: 3, padding: "8px" }}>
-          <Typography>
+          <Box>
             <Stack
               sx={{ my: "10px" }}
               direction={"row"}
@@ -109,7 +109,7 @@ function SideBar({}: Iprops) {
               </Typography>
               <SearchIcon sx={{ fontSize: "2.5rem", fontWeight: "bold" }} />
             </Stack>
-          </Typography>
+          </Box>
           {loadingAuthors ? <Loader /> : allAuthors}
         </Box>
       </Box>

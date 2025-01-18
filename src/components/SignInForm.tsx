@@ -3,7 +3,14 @@
 import { SignInFormData } from "@/data";
 import { IFormInputSignIn } from "@/Interface";
 import { useSigninMutation } from "@/redux/features/Api/Authapi";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,8 +19,7 @@ import InputError from "./InputError";
 import { signinSchema } from "@/validation/schema";
 import Loader from "./Loader";
 
-interface Iprops {}
-function SignInForm({}: Iprops) {
+function SignInForm() {
   const { push } = useRouter();
 
   const [SignInFunction, { isLoading }] = useSigninMutation();
@@ -25,9 +31,6 @@ function SignInForm({}: Iprops) {
     resolver: yupResolver(signinSchema),
   });
   const onSubmit: SubmitHandler<IFormInputSignIn> = async (data) => {
-    console.log(data);
-    0;
-
     try {
       const res: any = await SignInFunction(data);
       if (res.error) {
@@ -42,22 +45,23 @@ function SignInForm({}: Iprops) {
           duration: 1500,
         });
         localStorage.setItem("token", res.data.payload.token);
-        push("/");
+        push("/Home");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
-  const SignInInputs = SignInFormData.map((input,index) => (
-    <>
-      <TextField key={index}
+
+  const SignInInputs = SignInFormData.map((input, idx) => (
+    <FormControl key={idx} >
+      <TextField
         {...register(input.id)}
         sx={{
           display: "block",
           background: "#D6CE80",
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
-              border: "none", 
+              border: "none",
             },
           },
         }}
@@ -67,15 +71,39 @@ function SignInForm({}: Iprops) {
         variant="outlined"
         type={input.type}
       />
-
       {errors[input.id] && <InputError msg={errors[input.id]?.message} />}
-    </>
+    </FormControl>
   ));
+
+  // const SignInInputs = SignInFormData.map((input, index) => (
+  //   <>
+  //     <FormControl key={index}>
+  //       <TextField
+  //         {...register(input.id)}
+  //         sx={{
+  //           display: "block",
+  //           background: "#D6CE80",
+  //           "& .MuiOutlinedInput-root": {
+  //             "& fieldset": {
+  //               border: "none",
+  //             },
+  //           },
+  //         }}
+  //         fullWidth
+  //         id={input.id}
+  //         label={input.label}
+  //         variant="outlined"
+  //         type={input.type}
+  //       />
+  //     {errors[input.id] && <InputError msg={errors[input.id]?.message} />}
+  //     </FormControl>
+
+  //   </>
+  // ));
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack
-          // alignItems={"center"}
           justifyContent={"center"}
           direction={"column"}
           spacing={2}
@@ -129,11 +157,16 @@ function SignInForm({}: Iprops) {
           </Box>
           <Stack direction={"row"} justifyContent={"space-between"}>
             <Typography sx={{ color: "white" }}>
-              Don't you have an account? 
+              Don&apos;t have an account?  
             </Typography>
-            <Button onClick={()=>{
-              push("/signup");
-            }} sx={{ color: "#CC9600" }}>Create an account</Button>
+            <Button
+              onClick={() => {
+                push("/signup");
+              }}
+              sx={{ color: "#CC9600" }}
+            >
+              Create an account
+            </Button>
           </Stack>
         </Stack>
       </form>
