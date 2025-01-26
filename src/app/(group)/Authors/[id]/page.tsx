@@ -1,20 +1,18 @@
 import AuthorsContant from "@/components/AuthorsContant";
 
-interface IProps {
-  params: Promise<{
-    id: string;
-  }>;
+interface Iprops {
+  params: Promise<{ id: string }>;
 }
-async function page(props: IProps) {
-  const params = await props.params;
-  const { id } = params;
+ async function page(props: Iprops) {
+   const params = await props.params;
+   const id = await params.id;
 
-  return (
-    <>
-      <AuthorsContant id={id} />
-    </>
-  );
-}
+   return (
+     <>
+       <AuthorsContant id={id} />
+     </>
+   );
+ }
 
 export default page;
 

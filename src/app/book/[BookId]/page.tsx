@@ -17,5 +17,3 @@ async function page(props: IProps) {
 }
 
 export default page;
-
-
