@@ -2,16 +2,15 @@ import BookPageContant from "@/components/BookPageContant";
 
 
 interface IProps {
-  params: Promise<{
-    BookId: string;
-  }>;
+  params: Promise<{ id: string }>;
 }
-async function page(props: IProps) {
-  const params = await props.params;
-  const { BookId } = params;
+
+async function page({ params }: IProps) {
+  const resolvedParams = await params; // انتظار حل الـ Promise
+  const { id } = resolvedParams;
   return (
     <>
-    <BookPageContant BookId={BookId} />
+    <BookPageContant BookId={id} />
     </>
   );
 }
