@@ -1,12 +1,13 @@
 import AuthorsContant from "@/components/AuthorsContant";
 
 interface IProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{
+    id: string;
+  }>;
 }
-
-async function page({ params }: IProps) {
-  const resolvedParams = await params; // انتظار حل الـ Promise
-  const { id } = resolvedParams;
+async function page(props: IProps) {
+  const params = await props.params;
+  const { id } = params;
 
   return (
     <>
@@ -16,3 +17,6 @@ async function page({ params }: IProps) {
 }
 
 export default page;
+
+
+
