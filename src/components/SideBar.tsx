@@ -49,9 +49,6 @@ function SideBar() {
         <Box
           key={aut.id}
           className="cursor-pointer p-2 hover:text-white rounded-md my-4 hover:bg-[#CC9600]"
-          onClick={() => {
-            console.log(aut.authorName);
-          }}
         >
           <Stack direction={"row"} justifyContent={"space-between"}>
             <Typography

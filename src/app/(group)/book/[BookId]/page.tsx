@@ -9,6 +9,7 @@ interface IProps {
 async function page(props: IProps) {
   const params = await props.params;
   const { BookId } = params;
+  console.log(BookId);
   return (
     <>
     <BookPageContant BookId={BookId} />

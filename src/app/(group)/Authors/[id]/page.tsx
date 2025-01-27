@@ -6,6 +6,8 @@ interface Iprops {
  async function page(props: Iprops) {
    const params = await props.params;
    const id = await params.id;
+   console.log(id);
+
 
    return (
      <>

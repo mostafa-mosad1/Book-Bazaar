@@ -8,6 +8,7 @@ interface IProps {
   async function page(props: IProps) {
     const params = await props.params;
     const { id } = params;
+    console.log(id);
 
 
     return (
