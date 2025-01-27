@@ -129,7 +129,7 @@ function CartContant() {
           )}
         </Stack>
       </Container>
-      <div className="bg-black">
+      <div className="bg-black absolute inset-x-0 bottom-0 ">
         <div className="flex gap-8 flex-wrap lg:flex-nowrap  container text-white p-4 justify-around">
           <p className="font-normal text-lg capitalize">
             Number Of Books : {data?.payload?.books?.length}

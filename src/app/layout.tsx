@@ -16,7 +16,7 @@ export default function RootLayout({
       <body>
         <div className="">
          
-            <Provider store={store}>
+            <Provider  store={store}>
               {children}
               <Toaster />
             </Provider>

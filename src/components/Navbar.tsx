@@ -11,11 +11,13 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import PersonIcon from "@mui/icons-material/Person";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
 import { Stack } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import PopCategories from "./PopCategories";
 
 const pages = ["Home", "Categories", "Authors"];
 
@@ -32,7 +34,7 @@ function Navbar() {
     setAnchorElNav(null);
   };
   const localData =
-  typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   return (
     <AppBar
@@ -122,25 +124,43 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {pages.map((page) => (
-                <Link key={page} href={`/${page}`}>
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography
-                      sx={{ textAlign: "center", textTransform: "capitalize" }}
-                    >
-                      {page}
-                    </Typography>
-                  </MenuItem>
-                </Link>
-              ))}
+              {pages.map((page) => {
+                 if(page == "Categories"){
+                  return  <PopCategories/>
+                  }else {
+                  return  <Link key={page} href={`/${page}`}>
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography
+                        sx={{ textAlign: "center", textTransform: "capitalize" }}
+                      >
+                        {page}
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                  } ;
+              })}
 
               {localData ? (
-                <div className="flex gap-4  w-fit">
-                  <Link href={"/Cart"}>
-                    <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
-                  </Link>
-                  <Link href={"/favorites"}>
-                    <FavoriteBorderIcon sx={{ cursor: "pointer" }} />
+                <div className="">
+                  <div className="flex justify-center items-center  gap-4 ">
+                    <Link href={"/Cart"}>
+                      <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
+                    </Link>
+                    <Link href={"/favorites"}>
+                      <FavoriteBorderIcon sx={{ cursor: "pointer" }} />
+                    </Link>
+                  </div>
+                  <Link className="mx-2 my-4 rounded-md" href={"/signin"}>
+                    <Button
+                      className="bg-white  text-textColor hover:bg-textColor hover:text-white"
+                      sx={{ border: "1px solid black", color: "black" }}
+                      endIcon={<ExitToAppIcon />}
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                      }}
+                    >
+                      Log Out
+                    </Button>
                   </Link>
                 </div>
               ) : (
@@ -177,23 +197,21 @@ function Navbar() {
             justifyItems={"center"}
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            {pages.map((page) => (
-              <Link key={page} href={`/${page}`}>
-                <Button
-                  className="text-background text-sm font-semibold"
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    display: "block",
-                    textTransform: "capitalize",
-                    color: "white",
-                  }}
-                >
-                  {page}
-                </Button>
-              </Link>
-            ))}
+           {pages.map((page) => {
+                 if(page == "Categories"){
+                  return  <PopCategories/>
+                  }else {
+                  return  <Link key={page} href={`/${page}`}>
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography
+                        sx={{ textAlign: "center", textTransform: "capitalize" }}
+                      >
+                        {page}
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                  } ;
+              })}
           </Stack>
           <Box
             sx={{
@@ -207,12 +225,23 @@ function Navbar() {
             }}
           >
             {localData ? (
-              <div className="flex gap-4  w-fit absolute top-8  right-8">
+              <div className="flex items-baseline  gap-4  absolute top-4  right-8">
                 <Link href={"/Cart"}>
                   <AddShoppingCartIcon sx={{ cursor: "pointer" }} />
                 </Link>
                 <Link href={"/favorites"}>
                   <FavoriteBorderIcon sx={{ cursor: "pointer" }} />
+                </Link>
+                <Link className="mx-2 hover:bg-white border rounded-md border-solid text-white  hover:text-textColor bg-textColor " href={"/signin"}>
+                  <Button
+                    sx={{color:"white", ":hover":{color:"black"}}}
+                    endIcon={<ExitToAppIcon />}
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                    }}
+                  >
+                    Log Out
+                  </Button>
                 </Link>
               </div>
             ) : (

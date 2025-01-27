@@ -8,7 +8,10 @@ function Signup() {
       <Box
         sx={{
           height: "100vh",
-          width: "50%",
+          width: {
+            sm:"0",
+            md:"50%"
+          },
           background: "cyan",
           position: "relative",
         }}

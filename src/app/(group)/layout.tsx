@@ -13,8 +13,10 @@ function layout({ children }: Iprops) {
       <Navbar />
 
       <Leanding />
+      <Box sx={{backgroundColor:"white"}} >
+
       <Container>
-        <Stack direction={"row"} justifyContent={"space-between"}>
+        <Stack  direction={"row"} justifyContent={"space-between"}>
           <Box
             sx={{
               width: "25%",
@@ -40,6 +42,7 @@ function layout({ children }: Iprops) {
           </Box>
         </Stack>
       </Container>
+      </Box>
     </>
   );
 }
