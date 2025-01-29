@@ -45,7 +45,7 @@ function SignInForm() {
           duration: 1500,
         });
         localStorage.setItem("token", res.data.payload.token);
-        push("/Home");
+        location.replace("/Home");
       }
     } catch (error) {
       console.error(error);
@@ -75,31 +75,7 @@ function SignInForm() {
     </FormControl>
   ));
 
-  // const SignInInputs = SignInFormData.map((input, index) => (
-  //   <>
-  //     <FormControl key={index}>
-  //       <TextField
-  //         {...register(input.id)}
-  //         sx={{
-  //           display: "block",
-  //           background: "#D6CE80",
-  //           "& .MuiOutlinedInput-root": {
-  //             "& fieldset": {
-  //               border: "none",
-  //             },
-  //           },
-  //         }}
-  //         fullWidth
-  //         id={input.id}
-  //         label={input.label}
-  //         variant="outlined"
-  //         type={input.type}
-  //       />
-  //     {errors[input.id] && <InputError msg={errors[input.id]?.message} />}
-  //     </FormControl>
-
-  //   </>
-  // ));
+ 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

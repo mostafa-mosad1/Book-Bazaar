@@ -2,9 +2,10 @@ import * as React from "react";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import BasicRating from "./Rating";
-import { Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
+import { useRouter } from "next/navigation";
 
 export default function BookCard({
   img,
@@ -19,6 +20,10 @@ export default function BookCard({
   author: string;
   rating: number;
 }) {
+    const { push } = useRouter();
+  
+  const localData =
+  typeof window !== "undefined" ? localStorage.getItem("token") : null;
   return (
    
      <Stack
@@ -66,7 +71,22 @@ export default function BookCard({
       </div>
       </Link>
       <div className="mx-3">
-        <AddToCartButton id={id}/>
+        {localData?<AddToCartButton id={id}/>: <Button
+              variant="contained"
+              type="submit"
+              onClick={()=>{
+                push("/signin");
+              }}
+              sx={{
+                
+                mt:"10px",
+                backgroundColor: "#CC9600",
+                mx: "auto",
+                display: "block",
+              }}
+            >
+              Log in to buy books
+            </Button>}
       </div>
     </Stack>
    

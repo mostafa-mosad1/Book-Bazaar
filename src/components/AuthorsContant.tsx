@@ -45,13 +45,19 @@ function AuthorsContant({ id }: Iprops) {
   return (
     <>
       <Card key={data?.payload.author.authorName} sx={{ padding: "4px" }}>
-        <Stack direction={"row"}>
+        <Stack sx={{flexWrap:{
+          xs:"wrap",
+          lg:"nowrap"
+        }}} direction={"row"}>
           <Avatar
             alt="..."
             src="/images/authorImage.png"
             sx={{ width: "200px", height: "" }}
           />
-          <Box sx={{ ml: "100px", paddingTop: "30px" }}>
+          <Box sx={{ ml: {
+            xs:'15px',
+            lg:"100px"
+          }, paddingTop: "30px" }}>
             <Typography component={"h2"} variant="h4" sx={{ color: "#CC9600" }}>
               {data?.payload.author.authorName}
             </Typography>

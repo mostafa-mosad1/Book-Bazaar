@@ -53,7 +53,7 @@ export default function PopCategories() {
         sx={{
           textAlign: "center",
           textTransform: "capitalize",
-          backgroundColor:"transparent",
+          backgroundColor:{sm:"white",md:"transparent"},
           border:"none",
           color:{sm:"black",md:"white"},
           boxShadow:"none",fontWeight:"semibold"

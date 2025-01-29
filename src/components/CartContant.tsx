@@ -107,49 +107,51 @@ function CartContant() {
   );
   return (
     <>
-      <Container>
-        <Stack
-          sx={{ flexWrap: "wrap", paddingBlock: "50px" }}
-          gap={"20px"}
-          direction={"row"}
-          justifyContent={"center"}
-        >
-          {data?.payload?.books.length == 0 ? (
-            <div className="flex flex-col w-full  justify-center items-center h-[80vh]">
-              <Typography variant="h4">No Books found.</Typography>
-              <Image
-                src="/images/cartEmpty.png"
-                alt="logo"
-                width="500"
-                height={"500"}
-              />
-            </div>
-          ) : (
-            CartBooks
-          )}
-        </Stack>
-      </Container>
-      <div className="bg-black absolute inset-x-0 bottom-0 ">
-        <div className="flex gap-8 flex-wrap lg:flex-nowrap  container text-white p-4 justify-around">
-          <p className="font-normal text-lg capitalize">
-            Number Of Books : {data?.payload?.books?.length}
-          </p>
-          <p>estimated sales tax : 00%</p>
-          <p>All tax : 00 </p>
-          <p>estimated total : Free </p>
-
-          <Button
-            variant="contained"
-            type="submit"
-            sx={{
-              px: 10,
-              fontSize: "1.25rem",
-              backgroundColor: "#CC9600",
-              display: "block",
-            }}
+      <div className="  relative ">
+        <Container sx={{minHeight:"90vh",}}>
+          <Stack
+            sx={{ flexWrap: "wrap", paddingBlock: "50px" }}
+            gap={"20px"}
+            direction={"row"}
+            justifyContent={"center"}
           >
-            Check Out
-          </Button>
+            {data?.payload?.books.length == 0 ? (
+              <div className="flex flex-col w-full  justify-center items-center h-[60vh]">
+                <Typography variant="h4">No Books found.</Typography>
+                <Image
+                  src="/images/cartEmpty.png"
+                  alt="logo"
+                  width="500"
+                  height={"500"}
+                />
+              </div>
+            ) : (
+              CartBooks
+            )}
+          </Stack>
+        </Container>
+        <div className="bg-black absolute inset-x-0 bottom-0 ">
+          <div className="flex gap-8 flex-wrap lg:flex-nowrap  container text-white p-4 justify-around">
+            <p className="font-normal text-lg capitalize">
+              Number Of Books : {data?.payload?.books?.length}
+            </p>
+            <p>estimated sales tax : 00%</p>
+            <p>All tax : 00 </p>
+            <p>estimated total : Free </p>
+
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{
+                px: 10,
+                fontSize: "1.25rem",
+                backgroundColor: "#CC9600",
+                display: "block",
+              }}
+            >
+              Check Out
+            </Button>
+          </div>
         </div>
       </div>
     </>
