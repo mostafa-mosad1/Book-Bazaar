@@ -53,9 +53,9 @@ export default function PopCategories() {
         sx={{
           textAlign: "center",
           textTransform: "capitalize",
-          backgroundColor:{sm:"white",md:"transparent"},
+          backgroundColor:{xs:"white",md:"transparent"},
           border:"none",
-          color:{sm:"black",md:"white"},
+          color:{xs:"black",md:"white"},
           boxShadow:"none",fontWeight:"semibold"
         }}
         aria-describedby={id}
