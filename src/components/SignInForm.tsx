@@ -45,7 +45,7 @@ function SignInForm() {
           duration: 1500,
         });
         localStorage.setItem("token", res.data.payload.token);
-        location.replace("/Home");
+        location.replace("/");
       }
     } catch (error) {
       console.error(error);

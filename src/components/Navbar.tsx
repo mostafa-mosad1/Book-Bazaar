@@ -19,7 +19,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PopCategories from "./PopCategories";
 
-const pages = ["Home", "Categories", "Authors"];
+const pages = ["/", "Categories", "Authors"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -127,7 +127,17 @@ function Navbar() {
               {pages.map((page) => {
                  if(page == "Categories"){
                   return  <PopCategories key={page} />
-                  }else {
+                  }else if(page == "/"){
+                    return <Link key={page} href={`/`}>
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography
+                        sx={{ textAlign: "center", textTransform: "capitalize" }}
+                      >
+                        Home
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                  } else {
                   return  <Link key={page} href={`/${page}`}>
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                       <Typography
@@ -200,7 +210,17 @@ function Navbar() {
            {pages.map((page) => {
                  if(page == "Categories"){
                   return  <PopCategories key={page}/>
-                  }else {
+                  }else  if(page == "/"){
+                    return <Link key={page} href={`/`}>
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography
+                        sx={{ textAlign: "center", textTransform: "capitalize" }}
+                      >
+                        Home
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                  } else  {
                   return  <Link key={page} href={`/${page}`}>
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                       <Typography

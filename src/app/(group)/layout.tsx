@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import { Box, Container, Stack } from "@mui/material";
 import { ReactNode } from "react";
 import SideBar from "./../../components/SideBar";
-import Leanding from "@/components/Leanding";
 
 interface Iprops {
   children: ReactNode;
@@ -12,7 +11,6 @@ function layout({ children }: Iprops) {
   return (
     <>
       <Navbar />
-      <Leanding />
       <Box sx={{ backgroundColor: "white" }}>
         <Container>
           <Stack direction={"row"} justifyContent={"space-between"}>
