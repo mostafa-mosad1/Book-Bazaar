@@ -126,7 +126,7 @@ function Navbar() {
             >
               {pages.map((page) => {
                  if(page == "Categories"){
-                  return  <PopCategories/>
+                  return  <PopCategories key={page} />
                   }else {
                   return  <Link key={page} href={`/${page}`}>
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -199,7 +199,7 @@ function Navbar() {
           >
            {pages.map((page) => {
                  if(page == "Categories"){
-                  return  <PopCategories/>
+                  return  <PopCategories key={page}/>
                   }else {
                   return  <Link key={page} href={`/${page}`}>
                     <MenuItem key={page} onClick={handleCloseNavMenu}>

@@ -8,7 +8,7 @@ import { Stack } from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 export default function PopCategories() {
-  const { isLoading, data } = useGetAllCategoriesQuery("");
+  const {  data } = useGetAllCategoriesQuery("");
 
   const allGategories = data?.payload?.categories.map(
     (cate: { id: number; categoryName: string }) => (

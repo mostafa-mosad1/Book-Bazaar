@@ -44,7 +44,7 @@ function AuthorsContant({ id }: Iprops) {
   );
   return (
     <>
-      <Card sx={{ padding: "4px" }}>
+      <Card key={data?.payload.author.authorName} sx={{ padding: "4px" }}>
         <Stack direction={"row"}>
           <Avatar
             alt="..."
