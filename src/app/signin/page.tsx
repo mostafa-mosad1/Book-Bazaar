@@ -9,12 +9,11 @@ function page() {
         sx={{
           height: "100vh",
           width: {
-            sm:"0",
-            md:"50%"
+            sm: "0",
+            md: "50%",
           },
           background: "cyan",
           position: "relative",
-          
         }}
       >
         <Image
@@ -22,7 +21,6 @@ function page() {
           alt="Sign In"
           layout="fill"
           objectFit="filter"
-          
         />
       </Box>
       <Box
@@ -40,11 +38,10 @@ function page() {
             variant="h2"
             className="text-textColor  font-bold mb-8 text-center "
           >
-            Welcome to Bound Words!
+            Welcome to Book Bazaar!
           </Typography>
-          
+
           {<SignInForm />}
-        
         </Stack>
       </Box>
     </Stack>

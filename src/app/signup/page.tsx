@@ -44,7 +44,7 @@ function Signup() {
             className="text-textColor  font-bold  text-center "
             sx={{ marginBlock: "10px" }}
           >
-            SIGN UP TO Bound Words!
+            SIGN UP TO Book Bazaar!
           </Typography>
           <SignForm />
         </Box>

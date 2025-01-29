@@ -75,7 +75,7 @@ function Navbar() {
                 py: "10",
               }}
             >
-              Bound Words
+              Book Bazaar
             </Typography>
           </Stack>
 
@@ -94,7 +94,7 @@ function Navbar() {
               color: "#CC9600",
             }}
           >
-            Bound Words
+            Book Bazaar
           </Typography>
 
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
