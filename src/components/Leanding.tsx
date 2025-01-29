@@ -6,14 +6,15 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-
 import { SubmitHandler, useForm } from "react-hook-form";
-
+import { usePathname } from "next/navigation";
 
 function Leanding() {
   interface ISearch {
     search: string;
   }
+   const pathname = usePathname();
+   const isAuthPage = pathname === "/Home";
 
   const {
     register,
@@ -24,7 +25,7 @@ function Leanding() {
   };
   return (
     <>
-      <Stack
+     {isAuthPage && <Stack
         sx={{
           width: "100%",
           height: "100vh",
@@ -87,7 +88,7 @@ function Leanding() {
             </Button>
           </Stack>
         </Box>
-      </Stack>
+      </Stack>}
     </>
   );
 }
